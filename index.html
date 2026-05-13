@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>프로필</title>
+</head>
+<style>
+    *{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .container{
+        display: flex;
+        align-items: flex-start;
+        width:800px;
+        margin: 0 auto;
+        gap:10px;
+        background-color: #d6d5d5;
+        padding-bottom:15px;
+    }
+    .box-personal{
+        flex: 0 0 33%;
+        background:white;
+        box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+        margin-left:5px;
+        margin-top:5px;
+    }
+    .container1{
+        display:flex;
+        width:800px;
+        height: auto;
+        align-items: flex-start;
+        background-color: #d6d5d5;
+        margin:0 auto;
+    }
+    .port {
+        width: 790px;
+        margin-left:5px;
+        margin-right:5px;
+        margin-bottom:10px;
+        background-color: white;
+        box-shadow: 0 10px 10px rgb(0, 0, 0 ,0.1);
+        box-sizing: border-box;
+        z-index:10;
+    }
+
+    .right-col{
+        flex:1;
+        display:flex;
+        flex-direction: column;
+        gap:10px;
+    }
+    .box-work, .box-edu{
+        background:white;
+        box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+        margin-right:5px;
+        margin-top:5px;
+    }
+    .foot{
+        background-color: blueviolet;
+        width:800px;
+        height:90px;
+        margin:0 auto;
+    }
+    .box-personal .box-img {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;              /* 가운데 정렬 */
+        background: url("이신행.JPG") no-repeat center;
+        background-size: cover;      /* contain ❌ → cover ✅ */
+        border-radius: 50%;          /* 동그랗게 */
+    
+    }
+    .text{
+        top:300px;
+        color:black;
+        font-size:10px;
+        border-bottom: 1px solid #777;
+        margin-left: 10px;
+        margin-right:10px;
+        margin-bottom:20px;
+        margin-top:20px;
+        font-size:15px;
+
+    }
+    .name{
+        /* position:absolute; */
+        /* margin-left:13px; */
+        margin-bottom:5px;
+        margin-top:10px;
+        text-align: center;
+        /* bottom:0; */
+        color:black;
+    }
+    .text .horizontal{
+        display:flex;
+        align-items: flex-start;
+        gap:16px;
+        border-bottom:none;
+    }
+    .text-content{
+        flex:1;
+    }
+    .text-img {
+        flex: 0 0 auto;          /* 이미지 크기는 고정 */
+        width: 100px;            /* 필요에 따라 조절 */
+        height: auto;
+        border-radius: 4px;      /* 선택사항 */
+        margin-right:30px;
+        margin-top:10px;
+    }
+    .head{
+        margin-left:10px;
+        margin-top:10px;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;           /* 아이콘과 텍스트 사이 간격 */
+        font-size: 1.25em;    /* 필요에 따라 텍스트 크기 조정 */
+    }
+    .head img {
+        width: 1.5em;         /* 아이콘 크기 */
+        height: 1.5em;
+        flex-shrink: 0;       /* 너무 작아지지 않도록 고정 */
+    }
+    .bar {
+        position: relative;
+        width: 90%;
+        height: 8px;
+        margin-left: 5px;
+        background: #777;
+        border-radius: 4px; /* 10% 말고 픽셀 단위가 안정적입니다 */
+        overflow: hidden;   /* 안쪽 .progress가 튀어나오지 않도록 */
+    }
+
+    .bar .progress {
+        height: 100%;
+        background: #4caf50; /* 원하는 색 */
+        border-radius: inherit; /* 모서리 둥글게 */
+    }
+    .text p {
+        display: flex;
+        align-items: center;  /* 수직 가운데 정렬 */
+        gap: 0.5em;           /* 아이콘과 글자 사이 간격 (선택) */
+    }
+
+    .text p .icon {
+        width: 1em;           /* 원하시는 크기로 */
+        height: 1em;
+        flex-shrink: 0;       /* 너무 작아지지 않게 */
+    }
+    .foot{
+        display: flex;
+        justify-content: center; /* 수평 중앙 */
+        flex-direction: column;
+        align-items: center;     /* 수직 중앙 */
+        background-color: rgb(131, 82, 177);
+        width: 800px;
+        height: 90px;
+        margin: 0 auto;
+    }
+
+    .foot-text{
+        color: white;
+        font-size:15px;
+    }
+    .foot-icons{
+        display:flex;
+    }
+    .foot-icon{
+        width:1.5em;
+        height:auto;
+        margin-top:0.3em;
+        margin-bottom:0.3em;
+
+    }
+    .img{
+        width:200px;
+        height:auto;
+        margin-left:10px;
+    }
+
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #333;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 5px 5px;
+}
+
+.btn:hover {
+  background: blueviolet;
+}
+
+</style>
+<body>
+    <input type="checkbox" id="modal-toggle" hidden>
+        <div class="container">
+            <div class="box-personal">
+                <div class="box-img"></div>
+                <div class="name"> Jasmine Lee 이신행</div>
+                <div class="text">
+                    <p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2stb3Blbi1pY29uIGx1Y2lkZS1ib29rLW9wZW4iPjxwYXRoIGQ9Ik0xMiA3djE0Ii8+PHBhdGggZD0iTTMgMThhMSAxIDAgMCAxLTEtMVY0YTEgMSAwIDAgMSAxLTFoNWE0IDQgMCAwIDEgNCA0IDQgNCAwIDAgMSA0LTRoNWExIDEgMCAwIDEgMSAxdjEzYTEgMSAwIDAgMS0xIDFoLTZhMyAzIDAgMCAwLTMgMyAzIDMgMCAwIDAtMy0zeiIvPjwvc3ZnPg==" alt="lucide"> 
+                        프론트엔드 개발자</p>
+                    <p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhvdXNlLWljb24gbHVjaWRlLWhvdXNlIj48cGF0aCBkPSJNMTUgMjF2LThhMSAxIDAgMCAwLTEtMWgtNGExIDEgMCAwIDAtMSAxdjgiLz48cGF0aCBkPSJNMyAxMGEyIDIgMCAwIDEgLjcwOS0xLjUyOGw3LTUuOTk5YTIgMiAwIDAgMSAyLjU4MiAwbDcgNS45OTlBMiAyIDAgMCAxIDIxIDEwdjlhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJ6Ii8+PC9zdmc+" alt="lucide">
+                        서울특별시 중구</p>
+                    <p>
+                        <!-- ② label(for)로 감싸면 클릭 시 체크박스가 토글됩니다 -->
+                        <label for="modal-toggle" style="cursor:pointer; display:inline-block;">
+                        <img
+                            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1haWwtaWNvbiBsdWNpZGUtbWFpbCI+PHBhdGggZD0ibTIyIDctOC45OTEgNS43MjdhMiAyIDAgMCAxLTIuMDA5IDBMMiA3Ii8+PHJlY3QgeD0iMiIgeT0iNCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjE2IiByeD0iMiIvPjwvc3ZnPg=="
+                            alt="email"
+                        >
+                        </label>
+                        shinhaeng1204@gmail.com
+                    </p>
+                    <p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2stdXNlci1pY29uIGx1Y2lkZS1ib29rLXVzZXIiPjxwYXRoIGQ9Ik0xNSAxM2EzIDMgMCAxIDAtNiAwIi8+PHBhdGggZD0iTTQgMTkuNXYtMTVBMi41IDIuNSAwIDAgMSA2LjUgMkgxOWExIDEgMCAwIDEgMSAxdjE4YTEgMSAwIDAgMS0xIDFINi41YTEgMSAwIDAgMSAwLTVIMjAiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjgiIHI9IjIiLz48L3N2Zz4=" alt="lucide">
+                        010-5025-1304</p>
+                </div>
+                <div class="text">
+                    <p style="font-size:20px">skills</p>
+                    <p style="margin-left:5px;">HTML/CSS</p>
+                    <div class="bar">
+                        <div class="progress" style="width:50%"></div>
+                    </div>
+                    <p style="margin-left:5px;">javascript</p>
+                    <div class="bar">
+                        <div class="progress" style="width:70%"></div>
+                    </div>
+                    <p style="margin-left:5px;">react</p>
+                    <div class="bar" style="margin-bottom: 20px;">
+                        <div class="progress" style="width:70%"></div>
+                    </div>
+                </div>
+                <div class="text" style="border-bottom: none;">
+                    <p>Languages</p>
+                    <p style="margin-left:5px;">한국어</p>
+                    <div class="bar">
+                        <div class="progress" style="width:100%"></div>
+                    </div>
+                    <p style="margin-left:5px;">영어</p>
+                    <div class="bar">
+                        <div class="progress" style="width:50%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-col">
+                <div class="box-work">
+                    <div class="head" style="font-size:20px">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJyaWVmY2FzZS1idXNpbmVzcy1pY29uIGx1Y2lkZS1icmllZmNhc2UtYnVzaW5lc3MiPjxwYXRoIGQ9Ik0xMiAxMmguMDEiLz48cGF0aCBkPSJNMTYgNlY0YTIgMiAwIDAgMC0yLTJoLTRhMiAyIDAgMCAwLTIgMnYyIi8+PHBhdGggZD0iTTIyIDEzYTE4LjE1IDE4LjE1IDAgMCAxLTIwIDAiLz48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHg9IjIiIHk9IjYiIHJ4PSIyIi8+PC9zdmc+" alt="work">
+                        Work Experience</div>
+                    <div class="text">
+                        <p style="margin-left: 5px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMtaWNvbiBsdWNpZGUtY2FsZW5kYXItZGF5cyI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjxwYXRoIGQ9Ik04IDE0aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxNGguMDEiLz48cGF0aCBkPSJNMTYgMTRoLjAxIi8+PHBhdGggZD0iTTggMThoLjAxIi8+PHBhdGggZD0iTTEyIDE4aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxOGguMDEiLz48L3N2Zz4=" alt="month">Feb 2025 ~ June 2025</p>
+                        <p style="margin-left:10px">AI 여행챗봇</p>
+                        <ul>
+                            <li>다양한 api 연동해서 개발</li>
+                            <li>카카오, 이메일 연동해서 알림 설정</li>
+                            <li>Celery 기반 가격‑하락 모니터링이 목표가 달성 시 즉시 알림을 발송</li>
+                        </ul>
+                    </div>
+                    <div class="text">
+                        <p style="margin-left: 5px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMtaWNvbiBsdWNpZGUtY2FsZW5kYXItZGF5cyI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjxwYXRoIGQ9Ik04IDE0aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxNGguMDEiLz48cGF0aCBkPSJNMTYgMTRoLjAxIi8+PHBhdGggZD0iTTggMThoLjAxIi8+PHBhdGggZD0iTTEyIDE4aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxOGguMDEiLz48L3N2Zz4=" alt="month">July 2025 ~ Jan 2026 </p>
+                        <p style="margin-left:10px">구름 부트캠프</p>
+                            <ul>
+                                <li>프론트엔드 5회차 과정</li>
+                                <li>onfit 프로젝트를 포함해서 ttak 프로젝트, mind-safe 프로젝트 등 여러가지 프로젝트를 사람들과 협력해 구현함</li>
+                                <li>PM, PD, BE와 같이 협력해 한달 동안 건강기능식품 정보를 제공하는 사이트 구현함</li>
+                            </ul>
+                    </div>
+                    <div class="text" style="border-bottom: none;">
+                        <p style="margin-left: 5px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMtaWNvbiBsdWNpZGUtY2FsZW5kYXItZGF5cyI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjxwYXRoIGQ9Ik04IDE0aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxNGguMDEiLz48cGF0aCBkPSJNMTYgMTRoLjAxIi8+PHBhdGggZD0iTTggMThoLjAxIi8+PHBhdGggZD0iTTEyIDE4aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxOGguMDEiLz48L3N2Zz4=" alt="month">Nov 2025 ~ Dec 2025 </p>
+                        <p style="margin-left:10px">onfit</p>
+                            <ul>
+                                <li>누구나 쉽게 동네에서 함께 운동할 사람을 찾고, 실력/취향/시간대에 맞게 즉시 모임을 개설하거나 참여할 수 있는 운동 커뮤니티 플랫폼</li>
+                                <li>카카오 계정, 구글 계정과 연동해 supabase 서버에 저장</li>
+                                <li>supabase 서버 realtime 구독을 사용해 실시간 알림 수신, 실시간 채팅 기능 구현</li>
+                                <li>서비스 정책도 구현해 실제 서비스 운영 가능</li>
+                            </ul>
+                    </div>
+                    <!-- <div class="head" style="font-size:20px">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNwb3J0LXNob2UtaWNvbiBsdWNpZGUtc3BvcnQtc2hvZSI+PHBhdGggZD0ibTE1IDEwLjQyIDQuOC01LjA3Ii8+PHBhdGggZD0iTTE5IDE4aDMiLz48cGF0aCBkPSJNOS41IDIyIDIxLjQxNCA5LjQxNUEyIDIgMCAwIDAgMjEuMiA2LjRsLTUuNjEtNC4yMDhBMSAxIDAgMCAwIDE0IDN2MmEyIDIgMCAwIDEtMS4zOTQgMS45MDZMOC42NzcgOC4wNTNBMSAxIDAgMCAwIDggOWMtLjE1NSA2LjM5My0yLjA4MiA5LTQgOWEyIDIgMCAwIDAgMCA0aDE0Ii8+PC9zdmc+" alt="work">
+                        Hobby</div>
+                    <div class="text" style="border-bottom: none;">
+                        <p style="margin-left: 5px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMtaWNvbiBsdWNpZGUtY2FsZW5kYXItZGF5cyI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjxwYXRoIGQ9Ik04IDE0aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxNGguMDEiLz48cGF0aCBkPSJNMTYgMTRoLjAxIi8+PHBhdGggZD0iTTggMThoLjAxIi8+PHBhdGggZD0iTTEyIDE4aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxOGguMDEiLz48L3N2Zz4=" alt="month">2018 ~ Current</p>
+                        <p style="margin-left:10px">배드민턴</p>
+                            <ul>
+                                <li>동아리 회장</li>
+                                <li>전국 C조</li>
+                            </ul>
+                    </div> -->
+                    
+                </div>
+                <div class="box-edu">
+                <div class="head" style="font-size:20px">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNwb3J0LXNob2UtaWNvbiBsdWNpZGUtc3BvcnQtc2hvZSI+PHBhdGggZD0ibTE1IDEwLjQyIDQuOC01LjA3Ii8+PHBhdGggZD0iTTE5IDE4aDMiLz48cGF0aCBkPSJNOS41IDIyIDIxLjQxNCA5LjQxNUEyIDIgMCAwIDAgMjEuMiA2LjRsLTUuNjEtNC4yMDhBMSAxIDAgMCAwIDE0IDN2MmEyIDIgMCAwIDEtMS4zOTQgMS45MDZMOC42NzcgOC4wNTNBMSAxIDAgMCAwIDggOWMtLjE1NSA2LjM5My0yLjA4MiA5LTQgOWEyIDIgMCAwIDAgMCA0aDE0Ii8+PC9zdmc+" alt="work">
+                        Hobby</div>
+                    <div class="text" style="border-bottom: none;">
+                        <p style="margin-left: 5px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMtaWNvbiBsdWNpZGUtY2FsZW5kYXItZGF5cyI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjxwYXRoIGQ9Ik04IDE0aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxNGguMDEiLz48cGF0aCBkPSJNMTYgMTRoLjAxIi8+PHBhdGggZD0iTTggMThoLjAxIi8+PHBhdGggZD0iTTEyIDE4aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxOGguMDEiLz48L3N2Zz4=" alt="month">2018 ~ Current</p>
+                        <p style="margin-left:10px">배드민턴</p>
+                            <ul>
+                                <li>동아리 회장</li>
+                                <li>전국 C조</li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="box-edu">
+                    <div class="head" style="font-size:20px">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNjaG9vbC1pY29uIGx1Y2lkZS1zY2hvb2wiPjxwYXRoIGQ9Ik0xNCAyMnYtNGEyIDIgMCAxIDAtNCAwdjQiLz48cGF0aCBkPSJtMTggMTAgMy40NDcgMS43MjRhMSAxIDAgMCAxIC41NTMuODk0VjIwYTIgMiAwIDAgMS0yIDJINGEyIDIgMCAwIDEtMi0ydi03LjM4MmExIDEgMCAwIDEgLjU1My0uODk0TDYgMTAiLz48cGF0aCBkPSJNMTggNXYxNyIvPjxwYXRoIGQ9Im00IDYgNy4xMDYtMy41NTNhMiAyIDAgMCAxIDEuNzg4IDBMMjAgNiIvPjxwYXRoIGQ9Ik02IDV2MTciLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjkiIHI9IjIiLz48L3N2Zz4=" alt="school">
+                        Education</div>
+                    <div class="text" style="border-bottom: none;">
+                        <p style="margin-left: 5px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMtaWNvbiBsdWNpZGUtY2FsZW5kYXItZGF5cyI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjxwYXRoIGQ9Ik04IDE0aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxNGguMDEiLz48cGF0aCBkPSJNMTYgMTRoLjAxIi8+PHBhdGggZD0iTTggMThoLjAxIi8+PHBhdGggZD0iTTEyIDE4aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxOGguMDEiLz48L3N2Zz4=" alt="month">2022 ~ Current</p>
+                        <p style="margin-left:10px">서강대학교</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    <div class="container1">
+        <div class="port">
+            <div class="head" style="font-size:20px">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZvbGRlci1vcGVuLWRvdC1pY29uIGx1Y2lkZS1mb2xkZXItb3Blbi1kb3QiPjxwYXRoIGQ9Im02IDE0IDEuNDUtMi45QTIgMiAwIDAgMSA5LjI0IDEwSDIwYTIgMiAwIDAgMSAxLjk0IDIuNWwtMS41NSA2YTIgMiAwIDAgMS0xLjk0IDEuNUg0YTIgMiAwIDAgMS0yLTJWNWMwLTEuMS45LTIgMi0yaDMuOTNhMiAyIDAgMCAxIDEuNjYuOWwuODIgMS4yYTIgMiAwIDAgMCAxLjY2LjlIMThhMiAyIDAgMCAxIDIgMnYyIi8+PGNpcmNsZSBjeD0iMTQiIGN5PSIxNSIgcj0iMSIvPjwvc3ZnPg==" alt="projects">
+                        Projects</div>
+            <ul>
+                <li>
+                    <a href="https://github.com/Bookie-Chatbot/FE" target="_blank" rel="noopener noreferrer">
+                        <p style="margin-left:10px">Bookie (챗봇 기반 원스톱 항공 플래너)</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.onfitcrew.com/" target="_blank" rel="noopener noreferrer">
+                        <p style="margin-left:10px">onfit (동네에서 바로 만나는 운동 커뮤니티 플랫폼)</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.medilog.today/landing" target="_blank" rel="noopener noreferrer">
+                        <p style="margin-left:10px">ttak (공공데이터 기반 건강기능식품(건기식) 안심 정보 서비스)</p>
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- <p style="margin-left:10px">챗봇 기반 원스톱 항공 플래너</p> -->
+            <!-- <a href="https://github.com/Bookie-Chatbot/FE" target="_blank" rel="noopener noreferrer">
+                <img src="Bookie-logo.png" alt="bookie" class="img">
+            </a> -->
+            
+        </div>
+    </div>
+
+    <div class="modal-backdrop"></div>
+
+
+    <div class="modal">
+        <object
+            data="form.html"
+            type="text/html"
+            class="modal-frame"
+        ></object>
+        <label for="modal-toggle" class="modal-close">✕</label>
+    </div>
+    <footer class="foot">
+        <span class="foot-text">Click icons to find me on a social media</span>
+        <div class="foot-icons">
+            <a href="https://github.com/shinhaeng1204" class="btn" target="_blank" rel="noopener noreferrer">Github</a>
+            <a href="https://www.notion.so/library/recents?spaceId=0d5d058a513a4956b421855dd6ee6edc" class="btn" target="_blank" rel="noopener noreferrer">Notion</a>
+            <a href="https://velog.io/@jasmine1204/posts" class="btn" target="_blank" rel="noopener noreferrer">Velog</a>
+        </div>
+        <span class="foot-text" style="font-size: 10px;">2026 SHINHAENG LEE All rights reserved.</span>
+        
+    </footer>
+</body>
+</html>
